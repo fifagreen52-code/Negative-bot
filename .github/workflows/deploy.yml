@@ -1,0 +1,25 @@
+name: Sync to Hugging Face Hub
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to HF
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git remote add hf https://negative123:$HF_TOKEN@huggingface.co/spaces/negative123/negative-bot
+          git config --global user.email "fifagreen52@gmail.com"
+          git config --global user.name "fifagreen52-code"
+          git push --force hf main
+
