@@ -1,0 +1,10 @@
+{
+  "name": "negative-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "sexy.mjs",
+  "scripts": {
+    "start": "node sexy.mjs"
+  },
+  "dependencies": {}
+}
